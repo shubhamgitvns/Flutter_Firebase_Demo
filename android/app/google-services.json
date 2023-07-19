@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "345839573911",
+    "project_id": "fbflutterdemo-9fd23",
+    "storage_bucket": "fbflutterdemo-9fd23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345839573911:android:a593377f4bc6bed1d0c2d2",
+        "android_client_info": {
+          "package_name": "com.example.flutterfierebasedemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345839573911-oluevq89gj4f5av797cd9og8pblt9dnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCks3rHNGX34W-9C1_O4EUvUmh1-nmEDh8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345839573911-oluevq89gj4f5av797cd9og8pblt9dnm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

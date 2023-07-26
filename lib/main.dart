@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutterfierebasedemo/Utilities.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'googelsignin.dart';
 import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -28,17 +30,14 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
   @override
   void initState() {
     super.initState();
-    firebaseInit();
+    // () async{
+    //   Utilities.userdata = await VsjGoogleSignIn.getUser();
+    // };
+    // firebaseInit();
   }
 
   void firebaseInit() {
-    try {
-      //Firebase.initializeApp().whenComplete(() {
-
-      // print("Initialized");
-      // });
-      // FirebaseDemo.firestoredb = FirebaseFirestore.instance;
-    } catch (ee) {
+    try {} catch (ee) {
       print(ee);
     }
   }
@@ -50,8 +49,8 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
 
   //*****************************************************************************
 
-
-  String loginfo = "Varanasi Software Junction";
+  String loginfo = "Pilikothi software side";
+  dynamic data = '';
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +66,40 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              ElevatedButton(onPressed: ()async {
-                await VsjGoogleSignIn.doSignIn();
-                print("click");
+              Text(loginfo),
+              Text(data),
+             // Text(Utilities.userdata),
+              ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await VsjGoogleSignIn.doSignIn();
+                      User? user = VsjGoogleSignIn.getUser();
+                      if (user == null) {
+                        data = "Null";
+                      } else {
+                        data = user.displayName!;
+                      }
+                    } catch (ex) {
+                      data = ex.toString();
+                    }
 
-              }, child: Text("sign in"))
+                    setState(() {});
+                  },
+                  child: const Text("sign in")),
+
+              ElevatedButton(
+                  onPressed: () async {
+                    try{
+                      await VsjGoogleSignIn.doSignOut();
+                      data="Success_fully sign out";
+                    }catch (ex){
+                      data=ex;
+                    }
+
+                    setState(() {
+                    });
+                  },
+                  child: const Text("sign out")),
             ],
           ),
         ),

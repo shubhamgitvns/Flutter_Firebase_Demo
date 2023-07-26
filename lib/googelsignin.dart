@@ -38,7 +38,6 @@ class VsjGoogleSignIn {
 
   static User? getUser() {
     User? user = _auth.currentUser;
-
     return user;
   }
 }

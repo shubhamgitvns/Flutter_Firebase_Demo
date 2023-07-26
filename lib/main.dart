@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterfierebasedemo/Utilities.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 import 'googelsignin.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,7 +16,6 @@ void main() async {
 }
 
 class FirebaseDemo extends StatefulWidget {
-  // static FirebaseFirestore firestoredb; //=FirebaseFirestore.instance;
   @override
   _FirebaseDemoState createState() => _FirebaseDemoState();
 }
@@ -30,10 +27,10 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
   @override
   void initState() {
     super.initState();
-    // () async{
-    //   Utilities.userdata = await VsjGoogleSignIn.getUser();
-    // };
-    // firebaseInit();
+    () async{
+      Utilities.userdata = await VsjGoogleSignIn.getUser();
+    };
+    firebaseInit();
   }
 
   void firebaseInit() {
@@ -50,7 +47,7 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
   //*****************************************************************************
 
   String loginfo = "Pilikothi software side";
-  dynamic data = '';
+  dynamic data = Utilities.userdata;
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +75,7 @@ class _FirebaseDemoState extends State<FirebaseDemo> {
                         data = "Null";
                       } else {
                         data = user.displayName!;
+                        initState();
                       }
                     } catch (ex) {
                       data = ex.toString();
